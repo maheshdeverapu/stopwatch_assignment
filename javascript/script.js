@@ -1,8 +1,8 @@
 const timer = document.querySelector(".display_timer")
 let y = document.querySelectorAll("p");
-let hour = 0;
-let minute = 0;
-let second = 0;
+let hour = "00";
+let minute = "00";
+let second = "00";
 let milliSecond = "000";
 let index = 0;
 let x
@@ -24,18 +24,21 @@ function stopWatch(){
         milliSecond=0;
     }
     if(parseInt(second) === 60){
-        minute+=1;
-        // second="00";
+        minute=parseInt(minute)+1;
+        second="00";
     }
-    if(minute === 60){
-        hour+=1;
+    if(parseInt(minute) === 60){
+      hour=  parseInt(hour)+1;
         minute=0;
         // second="00";
     }
+    // debugger
     // timer.innerHTML = `00 : 00 : 00 : 00`
     // if(milliSecond < 10){milliSecond="00"+milliSecond}
     // else if(milliSecond < 100){milliSecond="0"+milliSecond}
-    // if(parseInt(second) < 10){second="0"+second}
+    if(parseInt(second) < 10){second="0"+parseInt(second)}
+    if(parseInt(minute) < 10){minute="0"+parseInt(minute)}
+    if(parseInt(hour) < 10){hour="0"+parseInt(hour)}
     timer.innerHTML = `${hour} : ${minute} : ${second} : ${milliSecond}`
     // debugger
 }
@@ -57,15 +60,15 @@ function PauseHandling(){
 }
 function resetHandling(){
     clearInterval();
-    hour = 00;
-    minute = 00;
-    second = 00;
-    milliSecond = 00;
+    hour = "00";
+    minute = "00";
+    second = "00";
+    milliSecond = "00";
     timer.innerHTML = `${hour} : ${minute} : ${second} : ${milliSecond}`
     // y.innerHTML = "";
-    document.querySelector(".addx").innerHTML = "";
+    // document.querySelector(".addx").innerHTML = "";
     // x.querySelectorAll(".addx").innerHTML = ""
-    // cast.innerHTML = "";
+    cast.innerHTML = "";
 }
 
 
